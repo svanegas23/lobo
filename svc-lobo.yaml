@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-lobo  
+  namespace: ns-lobo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: front
+  template:
+    metadata:
+      labels:
+        app: front
+    spec:
+      containers:
+      - name: lobo
+        image: tiagovanegas/lobo:54
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-lobo  
+  namespace: ns-lobo
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: front
