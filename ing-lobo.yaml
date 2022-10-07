@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: Ingress-lobo
+  name: ingress-lobo
   namespace: ns-lobo
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
